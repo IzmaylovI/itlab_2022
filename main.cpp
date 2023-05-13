@@ -1,34 +1,14 @@
-#include <arm_neon.h>
-
 #include <iostream>
 
-#include "benchmark.hpp"
+#include "bmp.hpp"
+#include "color.hpp"
 #include "function.hpp"
 #include "structer.hpp"
-
-void print_matrx(float32_t* A, int N, int M) {
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < M; j++) {
-      std::cout << A[i * M + j] << ' ';
-    }
-    std::cout << std::endl;
-  }
-}
-
-// using namespace cv;
+#include "gen_rand_data.hpp"
 
 int main() {
-  Image<bgr> a(1, 1);
-  float32_t* A = new float32_t[360000];
-  float32_t* B = new float32_t[360000];
-  float32_t* C = new float32_t[360000];
+  Image<rgb> a(10, 10, Color<rgb>(123, 124, 5));
+  std::cout << a(9, 4);
 
-  void (*q)(float32_t*, int, int) = print_matrx;
-
-  Benchmark<void (*)(float32_t*, float32_t*, float32_t*, int, int, int),
-            float32_t*, float32_t*, float32_t*, int, int, int>
-      b(matrix_multiply_2x2_neon_float, A, B, C, 600, 600, 600);
-  b.run();
-  b.info();
   return 0;
 }
