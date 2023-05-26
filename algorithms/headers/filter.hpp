@@ -82,12 +82,12 @@ Color<Layout> SobelX(const Image<Layout>& im, int x, int y) {
 
   for (int l = -radiusY; l <= radiusY; l++) {
     for (int k = -radiusX; k <= radiusX; k++) {
-      int idX = interval(x + k, 0, im.width - 1);
-      int idY = interval(y + l, 0, im.height - 1);
+      int idX = interval(x + l, 0, im.height - 1);
+      int idY = interval(y + k, 0, im.width - 1);
       Color<Layout> neighborColor = im(idX, idY);
-      resultR += neighborColor.R() * kernelX(k + radiusX, l + radiusY);
-      resultG += neighborColor.G() * kernelX(k + radiusX, l + radiusY);
-      resultB += neighborColor.B() * kernelX(k + radiusX, l + radiusY);
+      resultR += neighborColor.R() * kernelX(l + radiusX, k + radiusY);
+      resultG += neighborColor.G() * kernelX(l + radiusX, k + radiusY);
+      resultB += neighborColor.B() * kernelX(l + radiusX, k + radiusY);
     }
   }
 
@@ -120,12 +120,12 @@ Color<Layout> SobelY(const Image<Layout>& im, int x, int y) {
 
   for (int l = -radiusY; l <= radiusY; l++) {
     for (int k = -radiusX; k <= radiusX; k++) {
-      int idX = interval(x + k, 0, im.width - 1);
-      int idY = interval(y + l, 0, im.height - 1);
+      int idX = interval(x + l, 0, im.height - 1);
+      int idY = interval(y + k, 0, im.width - 1);
       Color<Layout> neighborColor = im(idX, idY);
-      resultR += neighborColor.R() * kernelY(k + radiusX, l + radiusY);
-      resultG += neighborColor.G() * kernelY(k + radiusX, l + radiusY);
-      resultB += neighborColor.B() * kernelY(k + radiusX, l + radiusY);
+      resultR += neighborColor.R() * kernelY(l + radiusX, k + radiusY);
+      resultG += neighborColor.G() * kernelY(l + radiusX, k + radiusY);
+      resultB += neighborColor.B() * kernelY(l + radiusX, k + radiusY);
     }
   }
 

@@ -1,7 +1,7 @@
 #ifndef _FUNCTION_
 #define _FUNCTION_
 
-#include <arm_neon.h>
+//#include <arm_neon.h>
 #include <omp.h>
 
 #define cllps 1
@@ -22,10 +22,10 @@ T multiplication_omp(const T& data1, const T& data2, int N, int M, int L) {
         res[i * col2 + j] += data1[i * col1 + k] * data2[k * col2 + j];
   return res;
 }
-
+/*
 void matrix_multiply_4x4_neon_float(float32_t* A, float32_t* B, float32_t* C,
                                     int N, int M, int L);
 void matrix_multiply_2x2_neon_float(float32_t* A, float32_t* B, float32_t* C,
                                     int N, int M, int L);
-
+*/
 #endif  // _FUNCTION_
